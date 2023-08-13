@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Define the container names
+REDIS_CONTAINER="redis"
+CUSTOMER_API_CONTAINER="customer-api"
+
+# Run Redis and customer-api containers
+docker stop "$REDIS_CONTAINER"
+docker stop "$CUSTOMER_API_CONTAINER"
+

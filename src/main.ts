@@ -1,8 +1,12 @@
 import { NestFactory } from '@nestjs/core';
+import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
+import { ClusterService } from './app.cluster.service';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+	const app = await NestFactory.create(AppModule);
+	app.useGlobalPipes(new ValidationPipe());
+	await app.listen(3000);
 }
-bootstrap();
+//bootstrap();
+ClusterService.clusterize(bootstrap);

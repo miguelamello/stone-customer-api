@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Define the container names
+REDIS_CONTAINER="redis"
+CUSTOMER_API_CONTAINER="customer-api"
+NETWORK="customer-api-network"
+
+if ! docker network ls | grep "$NETWORK"; then
+	docker network create "$NETWORK"
+fi
+
+# Run Redis and customer-api containers
+if docker ps -a --format '{{.Names}}' | grep "$REDIS_CONTAINER"; then 
+		docker start "$REDIS_CONTAINER"
+	else
+		docker run -d -p "6379:6379" --network "$NETWORK" --name "$REDIS_CONTAINER" "$REDIS_CONTAINER" redis-server --appendonly no
+fi
+
+if docker ps -a --format '{{.Names}}' | grep "$CUSTOMER_API_CONTAINER"; then 
+		docker start "$CUSTOMER_API_CONTAINER"
+	else
+		docker run -d -p "3000:3000" --network "$NETWORK" --name "$CUSTOMER_API_CONTAINER" "$CUSTOMER_API_CONTAINER"
+fi
