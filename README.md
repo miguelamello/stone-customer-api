@@ -27,17 +27,19 @@ Obs: Será necessário ter os seguintes softwares instalados em seu ambiente loc
 
 1> Baixar o codigo fonte do repositório:
 
-	$ cd ~
-	$ git clone https://github.com/miguelamello/stone-customer-api.git
+	cd ~ && git clone https://github.com/miguelamello/stone-customer-api.git
 
 2> Instalar as dependências do projeto:
 
-	$ cd stone-customer-api
-	$ npm install
+	cd stone-customer-api && npm install
 
 3> Configurar as variáveis de ambiente:
 
-A aplicação precisa de algumas poucas variáveis de ambiente para funcionar corretamente. Para isso, basta criar um arquivo chamado `.env` na raiz do projeto e preencher as variáveis de acordo com o exemplo abaixo:
+A aplicação precisa de algumas poucas variáveis de ambiente para funcionar corretamente. Para isso, basta criar um arquivo chamado `.env` na raiz do projeto:
+
+	touch .env
+
+Abra o arquivo `.env` em um editor de texto e preencha as variáveis de acordo com o exemplo abaixo:
 
 	API_PORT=3030
 	REDIS_HOST=localhost
@@ -68,8 +70,7 @@ A aplicação da API será executada no `Docker`, e para isso, é necessário te
 
 Para executar a aplicação, é necessário configurá-la no `Docker`. Para isso, preparei alguns comandos customizados para facilitar a configuração e execução da aplicação no `Dcoker``. Assumindo que você esteja com o termina de commando aberto e na raiz do projeto, siga os passos abaixo:
 
-	$ ./docker-build
-	$ ./docker-run
+	./docker-build && ./docker-run && ./docker-logs
 	
 
 
