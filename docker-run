@@ -9,8 +9,7 @@ CONTAINER_API=stone_customer_api
 CONTAINER_NETWORK=stone_customer_api_network
 
 if ! docker network ls | grep $CONTAINER_NETWORK; then
-	echo 0
-	#docker network create $CONTAINER_NETWORK
+	docker network create $CONTAINER_NETWORK
 fi
 
 # Run Redis and customer-api containers
