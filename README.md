@@ -35,7 +35,7 @@ Obs: Será necessário ter os seguintes softwares instalados em seu ambiente loc
 
 3> Configurar as variáveis de ambiente:
 
-A aplicação precisa de algumas poucas variáveis de ambiente para funcionar corretamente. Para isso, basta executar o arquivo `app-config` na raiz do projeto:
+A aplicação precisa de algumas poucas variáveis de ambiente para funcionar corretamente. Para isso, basta executar uma única vez, o arquivo `app-config` na raiz do projeto:
 
 	./app-config
 
