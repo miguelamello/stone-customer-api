@@ -68,12 +68,18 @@ Observações:
 ## Execução
 A aplicação da API será executada no `Docker`, e para isso, é necessário ter o `Docker` instalado em seu ambiente local. Se você não tiver o `Docker` instalado, siga as instruções de instalação disponíveis em: [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/). 
 
-Para executar a aplicação, é necessário configurá-la no `Docker`. Para isso, preparei alguns comandos customizados para facilitar a configuração e execução da aplicação no `Dcoker``. Assumindo que você esteja com o termina de commando aberto e na raiz do projeto, siga os passos abaixo:
+Para executar a aplicação, é necessário configurá-la no `Docker`. Para isso, preparei alguns comandos customizados para facilitar a configuração e execução da aplicação no `Docker`. Assumindo que você esteja com o terminal de commando aberto e na raiz do projeto, execute os commandos abaixo:
 
 	./docker-build && ./docker-run && ./docker-logs
 	
+O primeiro comando `docker-build` vai criar uma imagem Docker da aplicação. 
+O segundo comando `docker-run` vai executar a aplicação em um container Docker. 
+O terceiro comando `docker-logs` vai exibir os logs da aplicação em tempo real.
 
-
+A qualquer momento você pode parar de exibir os logs da aplicação pressionando `CTRL+C`. 
+Se quiser parar a execução da aplicação no `Docker`, execute o comando `docker-stop`.
+Se quiser iniciar novamente a aplicação, execute o comando `docker-run`.
+Se quiser ver os logs da aplicação novamente, execute o comando `docker-logs`.
 
 ## Uso
 

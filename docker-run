@@ -9,18 +9,19 @@ CONTAINER_API=stone_customer_api
 CONTAINER_NETWORK=stone_customer_api_network
 
 if ! docker network ls | grep $CONTAINER_NETWORK; then
-	docker network create $CONTAINER_NETWORK
+	echo 0
+	#docker network create $CONTAINER_NETWORK
 fi
 
 # Run Redis and customer-api containers
 if docker ps -a --format '{{.Names}}' | grep $CONTAINER_REDIS; then 
-		docker start $CONTAINER_REDIS
-	else
-		docker run -d -p "$REDIS_PORT:$REDIS_PORT" --network $CONTAINER_NETWORK --name $CONTAINER_REDIS $CONTAINER_REDIS
+	docker start $CONTAINER_REDIS
+else
+	docker run -d -p "$REDIS_PORT:$REDIS_PORT" --network $CONTAINER_NETWORK --name $CONTAINER_REDIS $CONTAINER_REDIS
 fi
 
 if docker ps -a --format '{{.Names}}' | grep $CONTAINER_API; then 
-		docker start $CONTAINER_API
-	else
-		docker run -e "API_PORT=$API_PORT" -e "REDIS_HOST=redis" -e "REDIS_PORT=$REDIS_PORT" -e "REDIS_TTL=$REDIS_TTL" -e "SECRET_KEY=$SECRET_KEY" -d -p "$API_PORT:$API_PORT" --network "$CONTAINER_NETWORK" --name "$CONTAINER_API" "$CONTAINER_API"
+	docker start $CONTAINER_API
+else
+	docker run -e "API_PORT=$API_PORT" -e "REDIS_HOST=redis" -e "REDIS_PORT=$REDIS_PORT" -e "REDIS_TTL=$REDIS_TTL" -e "SECRET_KEY=$SECRET_KEY" -d -p "$API_PORT:$API_PORT" --network "$CONTAINER_NETWORK" --name "$CONTAINER_API" "$CONTAINER_API"
 fi
