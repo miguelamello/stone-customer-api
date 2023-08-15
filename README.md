@@ -21,7 +21,7 @@ A API foi implementada utilizando a seguinte Stack de tecnologias:
 - AWS EC2
 
 ## Instalação
-A instalação e execução da API pode ser facilmente realizada seguindos os passos descritos abaixo. É assumido que seu ambiente local é Linux, BSD, MacOS ou alguma outra variante do Unix. Se você estiver utilizando Windows, pode ser necessário realizar algumas adaptações.
+A instalação e execução da API pode ser facilmente realizada seguindo os passos descritos abaixo. É assumido que seu ambiente local é Linux, BSD, MacOS ou alguma outra variante do Unix. Se você estiver utilizando Windows, pode ser necessário realizar algumas adaptações. Abra um terminal de comando e siga os passos abaixo.
 
 1> Baixar o codigo fonte do repositório:
 
