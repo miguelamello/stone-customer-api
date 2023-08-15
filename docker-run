@@ -4,9 +4,9 @@
 source .env
 
 # Define the container names
-CONTAINER_REDIS=customer_redis
-CONTAINER_API=customer_api
-CONTAINER_NETWORK=customer_api_network
+CONTAINER_REDIS=credis
+CONTAINER_API=stone_customer_api
+CONTAINER_NETWORK=stone_customer_api_network
 
 if ! docker network ls | grep $CONTAINER_NETWORK; then
 	docker network create $CONTAINER_NETWORK

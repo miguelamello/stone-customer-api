@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Define the image name
-IMAGE_API=customer_api
+IMAGE_API=stone_customer_api
 IMAGE_REDIS=redis
 
 # Build dist/ and copy static files

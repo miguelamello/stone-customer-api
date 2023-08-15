@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Define the container names
-CONTAINER_REDIS=customer_redis
-CONTAINER_CUSTOMER_API=customer_api
+CONTAINER_REDIS=redis
+CONTAINER_CUSTOMER_API=stone_customer_api
 
 # Run redis and customer-api containers
 docker stop $CONTAINER_REDIS
