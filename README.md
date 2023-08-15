@@ -35,12 +35,11 @@ Obs: Será necessário ter os seguintes softwares instalados em seu ambiente loc
 
 3> Configurar as variáveis de ambiente:
 
-A aplicação precisa de algumas poucas variáveis de ambiente para funcionar corretamente. Para isso, basta criar um arquivo chamado `.env` na raiz do projeto:
+A aplicação precisa de algumas poucas variáveis de ambiente para funcionar corretamente. Para isso, basta executar o arquivo `app-config` na raiz do projeto:
 
-	echo "API_PORT=3030\nREDIS_HOST=localhost\nREDIS_PORT=6379\nREDIS_TTL=300\nSECRET_KEY='3596bece-3609-4292-9ed8-b2881fae4cda'" > .env
+	./app-config
 
-
-Abra o arquivo `.env` em um editor de texto e preencha as variáveis de acordo com o exemplo abaixo:
+A tarefa dele é simples, apenas criar um arquivo `.env` na raiz do projeto, e preencher as variáveis de ambiente com valores padrão:
 
 	API_PORT=3030
 	REDIS_HOST=localhost

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+touch .env
+echo "API_PORT=3030" >> .env
+echo "REDIS_HOST=localhost" >> .env
+echo "REDIS_PORT=6379" >> .env
+echo "REDIS_TTL=300" >> .env
+echo "SECRET_KEY='3596bece-3609-4292-9ed8-b2881fae4cda'" >> .env
