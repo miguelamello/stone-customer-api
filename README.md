@@ -67,7 +67,7 @@ Conflitos de porta também podem ocorrer caso você já tenha um servidor Redis 
 
 5> Accessando a API:
 
-Mantendo-se as variáveis de ambiente sugeridas, a API estará disponível no endereço endereço `http://localhost:3030`. Nesse momento você pode acessar a documentação da API em `http://localhost:3030/reference` através do seu navegador web. Leia a documentação para entender como utilizar a API.
+Mantendo-se as variáveis de ambiente sugeridas, a API estará disponível no endereço `http://localhost:3030`. Nesse momento você pode acessar a documentação da API em `http://localhost:3030/reference` através do seu navegador web. Leia a documentação para entender como utilizar a API.
 
 Para efeticamente interagir e utilizar a API, você pode utilizar qualquer ferramenta que permita realizar requisições HTTP, como o `curl` ou o `Postman`, por exemplo. Recomendo o uso do `Postman` por ser uma ferramenta mais amigável e intuitiva. Contudo, a ferramenta que você escolher é uma questão de gosto pessoal.
 
