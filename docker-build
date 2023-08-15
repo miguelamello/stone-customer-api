@@ -2,7 +2,7 @@
 
 # Define the image name
 IMAGE_API=customer_api
-IMAGE_REDIS=redis
+IMAGE_REDIS=customer_redis
 
 # Build dist/ and copy static files
 npm run build

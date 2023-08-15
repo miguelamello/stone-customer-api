@@ -4,7 +4,7 @@
 source .env
 
 # Define the container names
-CONTAINER_REDIS=redis
+CONTAINER_REDIS=customer_redis
 CONTAINER_API=customer_api
 CONTAINER_NETWORK=customer_api_network
 

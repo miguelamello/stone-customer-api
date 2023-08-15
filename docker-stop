@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Define the container names
-CONTAINER_REDIS=redis
+CONTAINER_REDIS=customer_redis
 CONTAINER_CUSTOMER_API=customer_api
 
 # Run redis and customer-api containers
