@@ -4,7 +4,7 @@
 source .env
 
 # Define the container names
-CONTAINER_REDIS=credis
+CONTAINER_REDIS=redis
 CONTAINER_API=stone_customer_api
 CONTAINER_NETWORK=stone_customer_api_network
 
