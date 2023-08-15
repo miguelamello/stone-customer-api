@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
 # Define the image name
-IMAGE_NAME="customer-api"
-REDIS_IMAGE="redis"
+IMAGE_API=customer_api
+IMAGE_REDIS=redis
 
-# Clenau and build the image
-docker pull "$REDIS_IMAGE"
-docker rmi -f "$IMAGE_NAME"
-docker build -t "$IMAGE_NAME" .
+# Build dist/ and copy static files
+npm run build
+npm run static
 
+# Build the image
+docker pull $IMAGE_REDIS
+docker rmi -f $IMAGE_API
+docker build -t $IMAGE_API .

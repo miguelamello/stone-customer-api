@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Define the container names"
-CUSTOMER_API_CONTAINER="customer-api"
+CONTAINER_CUSTOMER_API=customer_api
 
 # Run docker logs -f
-docker logs -f "$CUSTOMER_API_CONTAINER"
+docker logs -f $CONTAINER_CUSTOMER_API
 

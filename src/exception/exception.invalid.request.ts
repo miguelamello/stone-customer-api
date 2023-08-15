@@ -19,7 +19,7 @@ export class BadRequestFilter implements ExceptionFilter {
 			response.status(status).json({
 				message: original['message'],
 				statusCode: status,
-				error: 'request inválida',
+				error: 'requisição inválida',
 			});
 		} else {
 			response.status(status).json({

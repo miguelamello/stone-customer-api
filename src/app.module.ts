@@ -7,6 +7,7 @@ import { SsoModule } from './sso/sso.module';
 import { AuthModule } from './auth/auth.module';
 import { CustomerModule } from './customer/customer.module';
 import { LoggerService } from './logging/logger.service';
+import { ReferenceModule } from './reference/reference.module';
 
 @Module({
 	imports: [
@@ -15,6 +16,7 @@ import { LoggerService } from './logging/logger.service';
 		RedisModule,
 		SsoModule,
 		AuthModule,
+		ReferenceModule,
 	],
 	controllers: [AppController],
 	providers: [AppService, LoggerService],

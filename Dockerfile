@@ -13,10 +13,6 @@ WORKDIR /home/node/app
 
 # Set environment variables
 ENV NODE_ENV=production
-ENV REDIS_HOST=redis
-ENV REDIS_PORT=6379
-ENV REDIS_TTL=300
-ENV SECRET_KEY='3596bece-3609-4292-9ed8-b2881fae4cda'
 
 # Copy package.json and package-lock.json to the container
 COPY --chown=node:node package*.json ./
@@ -26,10 +22,10 @@ RUN npm install
 RUN npm prune --production
 
 # Copy the rest of the application code
-COPY --chown=node:node . .
+COPY --chown=user:node . . 
 
 # Expose the port your app will run on
-EXPOSE 3000	
+EXPOSE 3030	
 
 # Command to run your NestJS app
-CMD ["npm", "run", "start:prod"]
+CMD npm run start:prod

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+npm run build
+npm run static
+npm run start:prod
+
+
