@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Define the container names"
-CONTAINER_CUSTOMER_API=stone_customer_api
+CONTAINER_API=stone_customer_api
 
 # Run docker logs -f
-docker logs -f $CONTAINER_CUSTOMER_API
+docker logs -f $CONTAINER_API
 

@@ -8,11 +8,15 @@ CONTAINER_API=stone_customer_api
 if docker ps -a --format '{{.Names}}' | grep $CONTAINER_REDIS; then 
 	if docker ps -a --format '{{.Status}}' | grep "Up"; then 
 		docker stop $CONTAINER_REDIS
+		docker rm -f $CONTAINER_REDIS
+		docker rmi -f $CONTAINER_REDIS
 	fi
 fi
 
 if docker ps -a --format '{{.Names}}' | grep $CONTAINER_API; then 
 	if docker ps -a --format '{{.Status}}' | grep "Up"; then 
 		docker stop $CONTAINER_API
+		docker rm -f $CONTAINER_API
+		docker rmi -f $CONTAINER_API
 	fi
 fi

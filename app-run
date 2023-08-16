@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+source .env
 npm run build
 npm run static
 npm run start:prod

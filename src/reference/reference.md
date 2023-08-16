@@ -9,16 +9,18 @@ Esta API REST tem como objetivo fornecer um serviço de cadastro de clientes, as
 - [Rotas](#3-rotas-a-href-stone-customer-api-a)
 	- [Cadastra um novo cliente](#3-1-cadastra-um-novo-cliente-a-href-3-rotas-a-href-stone-customer-api-a-a)
 	- [Atualiza um cliente](#3-2-atualiza-um-cliente-a-href-3-rotas-a-href-stone-customer-api-a-a)
-	- [Buscar um cliente pelo ID](#3-3-buscar-um-cliente-pelo-id-a-href-3-rotas-a-href-stone-customer-api-a-a)
+	- [Busca um cliente pelo ID](#3-3-busca-um-cliente-pelo-id-a-href-3-rotas-a-href-stone-customer-api-a-a)
 	- [Cadastra uma chave de API](#3-4-cadastra-uma-chave-de-api-a-href-3-rotas-a-href-stone-customer-api-a-a)
-	- [Buscar uma chave de API pelo email](#3-5-buscar-uma-chave-de-api-pelo-email-a-href-3-rotas-a-href-stone-customer-api-a-a)
+	- [Busca uma chave de API pelo email](#3-5-busca-uma-chave-de-api-pelo-email-a-href-3-rotas-a-href-stone-customer-api-a-a)
 - [Mensagens de erro](#4-mensagens-de-erro-a-href-stone-customer-api-a)
 - [Limitação das requicições](#5-limitacao-de-requisicoes-a-href-stone-customer-api-a)
 - [Registro de alterações](#6-registro-de-alteracoes-a-href-stone-customer-api-a)
 - [Exemplos](#7-exemplos-a-href-stone-customer-api-a)
-	- [Cadastra um novo cliente](#7-1-cadastrar-um-cliente-a-href-7-exemplos-a-href-stone-customer-api-a-a)
-	- [Atualiza um cliente](#7-2-atualizar-um-cliente-a-href-7-exemplos-a-href-stone-customer-api-a-a)
-	- [Buscar um cliente pelo ID](#7-2-buscar-um-cliente-a-href-7-exemplos-a-href-stone-customer-api-a-a)
+	- [Cadastra um novo cliente](#7-1-cadastra-um-cliente-a-href-7-exemplos-a-href-stone-customer-api-a-a)
+	- [Atualiza um cliente](#7-2-atualiza-um-cliente-a-href-7-exemplos-a-href-stone-customer-api-a-a)
+	- [Busca um cliente pelo ID](#7-3-busca-um-cliente-a-href-7-exemplos-a-href-stone-customer-api-a-a)
+	- [Cadastra uma chave de API](#7-4-cadastra-uma-chave-de-api-a-href-7-exemplos-a-href-stone-customer-api-a-a)
+	- [Busca uma chave de API pelo email](#7-5-busca-uma-chave-de-api-pelo-email-a-href-7-exemplos-a-href-stone-customer-api-a-a)
 - [Suporte e contato](#8-suporte-e-contato-a-href-stone-customer-api-a)
 
 
@@ -83,7 +85,7 @@ Essa rota atualiza as informações de um cliente.
 |	**Resposta de erro:**				|	{ "statusCode": <number>, "error": <string> }	|
 |	**Exemplo de requisição:** 	|	curl --location --request PUT 'http://orionsoft.site/stone-customer-api/api/v1/customer/e57a5d8f-92cc-426b-b9a9-de5523d5f75b' --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIi' --header 'Content-Type: application/json' --data '{ "document": 1, "name": "Paulo dos Santos" }' |
 
-### 3.3) Buscar um cliente pelo ID [&uarr;](#3-rotas-a-href-stone-customer-api-a)
+### 3.3) Busca um cliente pelo ID [&uarr;](#3-rotas-a-href-stone-customer-api-a)
 
 Essa rota busca um cliente pelo ID atribuído no momento criação do cadastro.
 
@@ -112,9 +114,9 @@ Essa rota cria uma Chave de API <token> para ser usada nas requisições.
 |	**Corpo da requisição:**		|	{ "email": <string> }	|
 |	**Resposta de sucesso:**		|	{ "bearer_token": <string> }	|
 |	**Resposta de erro:**				|	{ "statusCode": <number>, "error": <string> }	|
-|	**Exemplo de requisição:** 	|	curl --location --request POST 'http://orionsoft.site/stone-customer-api/api/v1/auth/' --header 'Content-Type: application/json' --data-raw '{ "email": "miguelangelomello@gmail.com" } |
+|	**Exemplo de requisição:** 	|	curl --location --request POST 'http://orionsoft.site/stone-customer-api/api/v1/auth/' --header 'Content-Type: application/json' --data-raw '{ "email": "someuser@example.com" } |
 
-### 3.5) Buscar uma chave de API pelo email. [&uarr;](#3-rotas-a-href-stone-customer-api-a)
+### 3.5) Busca uma chave de API pelo email. [&uarr;](#3-rotas-a-href-stone-customer-api-a)
 
 Essa rota busca uma Chave de API <token> pelo email.
 
@@ -127,7 +129,7 @@ Essa rota busca uma Chave de API <token> pelo email.
 |	**Corpo da requisição:**		|	vazio																|
 |	**Resposta de sucesso:**		|	{ "bearer_token": <string> }	|
 |	**Resposta de erro:**				|	{ "statusCode": <number>, "error": <string> }	|
-|	**Exemplo de requisição:** 	|	curl --location --request GET 'http://orionsoft.site/stone-customer-api/api/v1/auth/miguelangelomello@gmail.com'' --header 'Content-Type: application/json' |
+|	**Exemplo de requisição:** 	|	curl --location --request GET 'http://orionsoft.site/stone-customer-api/api/v1/auth/someuser@example.com'' --header 'Content-Type: application/json' |
 
 
 ## 4) Mensagens de erro [&uarr;](#stone-customer-api)
@@ -146,9 +148,10 @@ As principais mensagens de erro são:
 | :---    | :---			  								|	:---			  									|	
 |	**400**	|	requisição inválida					|	As informações enviadas na requisição estão incorretas	|
 |	**401**	|	não autorizado							|	<token> inválido ou não informado		|
-|	**404**	|	cliente inexistente					|	Cliente não encontrado na base de dados					|
-|	**500**	|	erro interno do servidor		|	Alguma condição não esperada ocorreu e o serviço não consegue atender no momento					|
-| **502**	|	cache indisponivel					|	Acesso momentâneamente indisponível à base de dados		|
+|	**404**	|	cliente inexistente					|	Cliente não encontrado					|
+|	**405**	|	token inexistente						|	Token não encontrado					|
+|	**500**	|	erro interno do servidor		|	Alguma condição não esperada ocorreu					|
+| **502**	|	cache indisponivel					|	Acesso momentâneamente indisponível ao cache		|
 | **503**	|	sso indisponivel						|	Acesso momentâneamente indisponível ao serviço de autenticação		|
 
 
@@ -173,15 +176,17 @@ A API está limitada a 100 requisições por minuto por usuário. Caso esse limi
 
 ## 7) Exemplos [&uarr;](#stone-customer-api)
 
-1. [Cadastrar um novo cliente](#7-1-cadastrar-um-cliente-a-href-7-exemplos-a-href-stone-customer-api-a-a)
-2. [Atualizar um cliente](#7-2-atualizar-um-cliente-a-href-7-exemplos-a-href-stone-customer-api-a-a)
-3. [Buscar um cliente pelo ID](#7-2-buscar-um-cliente-a-href-7-exemplos-a-href-stone-customer-api-a-a)
+1. [Cadastra um novo cliente](#7-1-cadastra-um-cliente-a-href-7-exemplos-a-href-stone-customer-api-a-a)
+2. [Atualiza um cliente](#7-2-atualiza-um-cliente-a-href-7-exemplos-a-href-stone-customer-api-a-a)
+3. [Busca um cliente pelo ID](#7-3-busca-um-cliente-a-href-7-exemplos-a-href-stone-customer-api-a-a)
+4. [Cadastra uma chave de API](#7-4-cadastra-uma-chave-de-api-a-href-7-exemplos-a-href-stone-customer-api-a-a)
+5. [Busca uma chave de API pelo email](#7-5-busca-uma-chave-de-api-pelo-email-a-href-7-exemplos-a-href-stone-customer-api-a-a)
 
 Alguns exemplos de requisições nas linguagens mais populares:
 
 Obs: O <token> foi encurtado para fins de demonstração. O <token> completo possui 1080 caracteres alphanuméricos.
 
-### 7.1) Cadastrar um cliente [&uarr;](#7-exemplos-a-href-stone-customer-api-a)
+### 7.1) Cadastra um cliente [&uarr;](#7-exemplos-a-href-stone-customer-api-a)
 
 ```
 /// Node.js
@@ -260,7 +265,7 @@ fetch("http://orionsoft.site/stone-customer-api/api/v1/customer/", requestOption
 	.catch(error => console.log('error', error));
 ```
 
-### 7.2) Atualizar um cliente [&uarr;](#7-exemplos-a-href-stone-customer-api-a)
+### 7.2) Atualiza um cliente [&uarr;](#7-exemplos-a-href-stone-customer-api-a)
 
 ```
 /// Node.js
@@ -340,7 +345,7 @@ fetch("http://orionsoft.site/stone-customer-api/api/v1/customer/e57a5d8f-92cc-42
 	.catch(error => console.log('error', error));
 ```
 
-### 7.2) Buscar um cliente [&uarr;](#7-exemplos-a-href-stone-customer-api-a)
+### 7.3) Busca um cliente [&uarr;](#7-exemplos-a-href-stone-customer-api-a)
 
 ```
 /// Node.js
@@ -400,6 +405,126 @@ fetch("http://orionsoft.site/stone-customer-api/api/v1/customer/37096c8a-231d-4b
 	.catch(error => console.log('error', error));
 ```
 
+### 7.4) Cadastra uma chave de API [&uarr;](#7-exemplos-a-href-stone-customer-api-a)
+
+```
+const axios = require('axios');
+let data = JSON.stringify({
+  "email": "someuser@example.com"
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'http://localhost:3030/auth',
+  headers: { 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+```
+
+```
+/// Python
+
+import requests
+import json
+
+url = "http://localhost:3030/auth"
+
+payload = json.dumps({
+  "email": "someuser@example.com"
+})
+headers = {
+  'Content-Type': 'application/json'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+```
+```
+/// Javascript
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+var raw = JSON.stringify({
+  "email": "someuser@example.com"
+});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("http://localhost:3030/auth", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+
+### 7.5) Busca uma chave de API pelo email [&uarr;](#7-exemplos-a-href-stone-customer-api-a)
+
+```
+/// Node.js
+
+const axios = require('axios');
+
+let config = {
+  method: 'get',
+  maxBodyLength: Infinity,
+  url: 'http://localhost:3030/auth/someuser@example.com',
+  headers: { }
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+```
+
+```
+/// Python
+
+import requests
+
+url = "http://localhost:3030/auth/someuser@example.com"
+
+payload = {}
+headers = {}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
+```
+
+```
+/// Javascript
+
+var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+fetch("http://localhost:3030/auth/someuser@example.com", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
 
 ## 8) Suporte e contato [&uarr;](#stone-customer-api)
 
