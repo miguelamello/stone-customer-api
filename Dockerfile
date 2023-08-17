@@ -22,7 +22,7 @@ RUN npm install
 RUN npm prune --production
 
 # Copy the rest of the application code
-COPY --chown=user:node . . 
+COPY --chown=node:node . . 
 
 # Expose the port your app will run on
 EXPOSE 3030	
