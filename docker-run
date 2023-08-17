@@ -18,7 +18,11 @@ if docker ps -a --format '{{.Names}}' | grep $CONTAINER_REDIS; then
 		docker start $CONTAINER_REDIS
 	fi
 else
-	docker run -d -p "$REDIS_PORT:$REDIS_PORT" --network $CONTAINER_NETWORK --name $CONTAINER_REDIS $CONTAINER_REDIS
+	REDIS_FILE="redis.conf"
+	rm -f "$REDIS_FILE"	
+	echo "HOST localhost" >> "$REDIS_FILE"
+	echo "PORT $REDIS_PORT" >> "$REDIS_FILE"
+	docker run -d -v "$REDIS_FILE:/usr/local/etc/redis/redis.conf" -p "$REDIS_PORT:$REDIS_PORT" --network $CONTAINER_NETWORK --name $CONTAINER_REDIS redis-server /usr/local/etc/redis/redis.conf
 fi
 
 if docker ps -a --format '{{.Names}}' | grep $CONTAINER_API; then 
