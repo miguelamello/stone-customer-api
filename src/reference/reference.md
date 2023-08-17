@@ -48,9 +48,9 @@ Obs: A chave de API pode ser obtida através da rota `POST /auth`.
 
 1. [POST /customer](#3-1-cadastra-um-novo-cliente-a-href-3-rotas-a-href-stone-customer-api-a-a)
 2. [PUT /customer/:id](#3-2-atualiza-um-cliente-a-href-3-rotas-a-href-stone-customer-api-a-a)
-3. [GET /customer/:id](#3-3-buscar-um-cliente-pelo-id-a-href-3-rotas-a-href-stone-customer-api-a-a)
+3. [GET /customer/:id](#3-2-atualiza-um-cliente-a-href-3-rotas-a-href-stone-customer-api-a-a)
 4. [POST /auth](#3-4-cadastra-uma-chave-de-api-a-href-3-rotas-a-href-stone-customer-api-a-a)
-5. [GET /auth/:email](#3-5-buscar-uma-chave-de-api-pelo-email-a-href-3-rotas-a-href-stone-customer-api-a-a)
+5. [GET /auth/:email](#3-5-busca-uma-chave-de-api-pelo-email-a-href-3-rotas-a-href-stone-customer-api-a-a)
 
 
 ### 3.1) Cadastra um novo cliente. [&uarr;](#3-rotas-a-href-stone-customer-api-a)
