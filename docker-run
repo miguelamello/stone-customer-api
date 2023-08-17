@@ -4,7 +4,7 @@
 source .env
 
 # Define the container names
-CONTAINER_REDIS=redis
+CONTAINER_REDIS=stone_customer_redis
 CONTAINER_API=stone_customer_api
 CONTAINER_NETWORK=stone_customer_api_network
 
@@ -22,7 +22,7 @@ else
 	rm -f "$REDIS_FILE"	
 	echo "HOST localhost" >> "$REDIS_FILE"
 	echo "PORT $REDIS_PORT" >> "$REDIS_FILE"
-	docker run -d -v "$REDIS_FILE:/usr/local/etc/redis/redis.conf" -p "$REDIS_PORT:$REDIS_PORT" --network $CONTAINER_NETWORK --name $CONTAINER_REDIS redis-server /usr/local/etc/redis/redis.conf
+	docker run -d -v "$REDIS_FILE:/usr/local/etc/redis/redis.conf" -p "$REDIS_PORT:$REDIS_PORT" --network $CONTAINER_NETWORK --name $CONTAINER_REDIS redis /usr/local/etc/redis/redis.conf
 fi
 
 if docker ps -a --format '{{.Names}}' | grep $CONTAINER_API; then 
