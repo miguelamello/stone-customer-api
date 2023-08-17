@@ -1,9 +1,35 @@
 #!/usr/bin/env bash
 
-touch .env
-echo "API_PORT=3030" >> .env
-echo "REDIS_HOST=localhost" >> .env
-echo "REDIS_PORT=6379" >> .env
-echo "REDIS_TTL=300" >> .env
-echo "SECRET_KEY='3596bece-3609-4292-9ed8-b2881fae4cda'" >> .env
-source .env
+ENV_FILE=".env"
+
+# Function to check if a variable exists in the .env file
+variable_exists() {
+  grep -q "^$1=" "$ENV_FILE"
+}
+
+# Create .env file if it doesn't exist
+touch "$ENV_FILE"
+
+# Check and add variables if they don't exist
+if ! variable_exists "API_PORT"; then
+  echo "API_PORT=3030" >> "$ENV_FILE"
+fi
+
+if ! variable_exists "REDIS_HOST"; then
+  echo "REDIS_HOST=localhost" >> "$ENV_FILE"
+fi
+
+if ! variable_exists "REDIS_PORT"; then
+  echo "REDIS_PORT=6379" >> "$ENV_FILE"
+fi
+
+if ! variable_exists "REDIS_TTL"; then
+  echo "REDIS_TTL=300" >> "$ENV_FILE"
+fi
+
+if ! variable_exists "SECRET_KEY"; then
+  echo "SECRET_KEY='3596bece-3609-4292-9ed8-b2881fae4cda'" >> "$ENV_FILE"
+fi
+
+# Source the updated .env file
+source "$ENV_FILE"

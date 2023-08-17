@@ -1,11 +1,11 @@
 import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { AuthService } from './auth.service';
+import { AuthService } from '../auth/auth.service';
 import { NotAuthorizedException } from '../exception/exception.not.authorized';
 
 // This Guard is used to check if the Bearer Token is present and valid
 @Injectable()
-export class AuthBearerGuard implements CanActivate {
+export class BearerGuard implements CanActivate {
 	constructor(
 		private readonly reflector: Reflector,
 		private readonly authService: AuthService,

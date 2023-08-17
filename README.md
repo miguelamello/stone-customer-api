@@ -17,6 +17,7 @@ A API foi implementada utilizando a seguinte Stack de tecnologias:
 - Redis
 - Axios
 - Ioredis
+- Jest
 - Docker
 - AWS EC2
 
@@ -82,9 +83,20 @@ Se quiser iniciar novamente a aplicação, execute o comando `docker-run`.
 Se quiser ver os logs da aplicação novamente, execute o comando `docker-logs`.
 
 ## Uso
+Com a aplicação rodando no `Docker`, você pode começar a testar a API. Um primeiro passo é verificar se a aplicação está funcionando corretamente. Para isso, abra um navegador e acesse a documentação:
+
+`http://localhost:3030/reference`
+
+Utilize a documentação para testar os endpoints da API. Você encontrará exemplos de requisições e respostas para cada endpoint. Recomendo o uso de algum cliente desktop, tal como o `Postman` para interagir com a API.
 
 ## Testes
 
-## Conclusão
+Para executar os testes dos endpoints, execute o comando abaixo:
 
+	npm test
+
+Obs: Certifique que a aplicação esteja executando no `Docker` antes de executar os testes.
+
+## Conclusão
+A "API de Clientes Stone" é uma API REST baseada em NodeJS, utilizando NestJS e TypeScript. Ela oferece serviços para registro, atualização e consulta de dados de clientes. A autenticação é feita por meio de um Token de Portador com tempo limitado. Documentação e detalhes de implementação estão disponíveis. Redis e Axios são usados, com testes via Jest. A instalação e execução ocorrem via Docker. A API apresenta uma abordagem clara para gerenciar clientes com vários componentes tecnológicos.
 

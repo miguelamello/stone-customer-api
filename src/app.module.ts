@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { ThrottlerModule } from '@nestjs/throttler';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { RedisModule } from './redis/redis.module';
@@ -12,6 +13,7 @@ import { ReferenceModule } from './reference/reference.module';
 @Module({
 	imports: [
 		ConfigModule.forRoot({ isGlobal: true, cache: true }),
+		ThrottlerModule.forRoot({ ttl: 60, limit: 100 }),
 		CustomerModule,
 		RedisModule,
 		SsoModule,

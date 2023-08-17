@@ -10,7 +10,8 @@ import {
 } from '@nestjs/common';
 import { CustomerService } from './customer.service';
 import { CustomerQueryDto, CustomerBodyDto } from './customer.dto';
-import { AuthBearerGuard } from '../auth/auth.bearer.guard';
+import { BearerGuard } from '../guard/bearer.guard';
+import { ContentTypeGuard } from '../guard/content-type.guard';
 import { BadRequestFilter } from '../exception/exception.invalid.request';
 
 @Controller('customer')
@@ -19,7 +20,8 @@ export class CustomerController {
 
 	// Salvar um novo cliente
 	@Post()
-	@UseGuards(AuthBearerGuard)
+	@UseGuards(ContentTypeGuard)
+	@UseGuards(BearerGuard)
 	@UseFilters(BadRequestFilter)
 	async postCostumer(@Body() customerBodyDto: CustomerBodyDto): Promise<any> {
 		return this.customerService.postCostumer(customerBodyDto);
@@ -27,14 +29,15 @@ export class CustomerController {
 
 	//Buscar um cliente por ID
 	@Get(':id')
-	@UseGuards(AuthBearerGuard)
+	@UseGuards(BearerGuard)
 	async getCostumer(@Param() customerQueryDto: CustomerQueryDto): Promise<any> {
 		return this.customerService.getCostumer(customerQueryDto.id);
 	}
 
 	// Atualizar um cliente
 	@Put(':id')
-	@UseGuards(AuthBearerGuard)
+	@UseGuards(ContentTypeGuard)
+	@UseGuards(BearerGuard)
 	@UseFilters(BadRequestFilter)
 	async putCostumer(
 		@Param() customerQueryDto: CustomerQueryDto,
