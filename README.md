@@ -44,7 +44,7 @@ A tarefa dele é simples, apenas criar um arquivo `.env` na raiz do projeto, e p
 
 	API_PORT=3030
 	REDIS_HOST=localhost
-	REDIS_PORT=6379
+	REDIS_PORT=6380
 	REDIS_TTL=300
 	SECRET_KEY='3596bece-3609-4292-9ed8-b2881fae4cda'	
 
@@ -57,12 +57,12 @@ O propósito das variáveis já é bem auto-explicativo, mas segue uma breve des
 
 - `API_PORT`: Porta em que a API vai ser executada. O valor padrão é 3030.
 - `REDIS_HOST`: Endereço do servidor Redis. O valor padrão é `localhost` para execução local.
-- `REDIS_PORT`: Porta do servidor Redis. O valor padrão é 6379.
+- `REDIS_PORT`: Porta do servidor Redis. O valor padrão é 6380.
 - `REDIS_TTL`: Tempo de vida dos dados temporários em cache no Redis, em segundos. O valor padrão é 300 segundos (5 minutos).
 - `SECRET_KEY`: Chave de segurança utilizada para criar um `hash` do Bearer Token. Você pode usar uma string de qualquer tamanho que desejar. 
 
 Observações: 
-1) Certifique-se de que não tenha uma instância do Redis já executando em sua máquina local, pois isso pode causar conflitos, visto ser provável que essa instância esteja utilizando a porta padrão 6379. Caso esse seja o caso, você pode alterar a porta padrão do Redis para uma porta diferente, e alterar a variável `REDIS_PORT` de acordo. Poderá também parar a instância do Redis que já está executando em sua máquina local, enquanto estiver testando a API.
+1) Para evitar conflitos de porta com alguma instalação de `Redis` rodando no ambiente de teste, a porta padrão do `Redis` foi alterada para 6380.
 
 2) Pode ocorrer também de você ter alguma outra aplicação executando na porta padrão 3030. Nesse caso, você pode alterar a porta padrão da API para uma porta diferente, e alterar a variável `API_PORT` de acordo.
 
