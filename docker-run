@@ -18,14 +18,6 @@ if docker ps -a --format '{{.Names}}' | grep $CONTAINER_REDIS; then
 		docker start $CONTAINER_REDIS
 	fi
 else
-	REDIS_FILE="redis.conf"
-	rm -f "$REDIS_FILE"	
-	touch "$REDIS_FILE"
-	chmod 0755 "$REDIS_FILE"
-	echo "HOST localhost" >> "$REDIS_FILE"
-	echo "PORT $REDIS_PORT" >> "$REDIS_FILE"
-	PWD=$(pwd)
-	echo "CONFIGFILE $PWD/$REDIS_FILE"
 	docker run -d -p "$REDIS_PORT:6379" --network $CONTAINER_NETWORK --name $CONTAINER_REDIS redis redis-server --save 60 1 --loglevel warning
 fi
 
@@ -34,5 +26,5 @@ if docker ps -a --format '{{.Names}}' | grep $CONTAINER_API; then
 		docker start $CONTAINER_API
 	fi
 else
-	docker run -e "API_PORT=$API_PORT" -e "REDIS_HOST=redis" -e "REDIS_PORT=$REDIS_PORT" -e "REDIS_TTL=$REDIS_TTL" -e "SECRET_KEY=$SECRET_KEY" -d -p "$API_PORT:$API_PORT" --network "$CONTAINER_NETWORK" --name "$CONTAINER_API" "$CONTAINER_API"
+	docker run -e "API_PORT=$API_PORT" -e "REDIS_HOST=$CONTAINER_REDIS" -e "REDIS_PORT=$REDIS_PORT" -e "REDIS_TTL=$REDIS_TTL" -e "SECRET_KEY=$SECRET_KEY" -d -p "$API_PORT:$API_PORT" --network "$CONTAINER_NETWORK" --name "$CONTAINER_API" "$CONTAINER_API"
 fi
