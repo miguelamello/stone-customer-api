@@ -9,6 +9,6 @@ npm run build
 npm run static
 
 # Build the image
-docker pull $IMAGE_REDIS
+#docker pull $IMAGE_REDIS
 docker rmi -f $IMAGE_API
 docker build -t $IMAGE_API .
