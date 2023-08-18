@@ -18,6 +18,7 @@ if docker ps -a --format '{{.Names}}' | grep $CONTAINER_REDIS; then
 		docker start $CONTAINER_REDIS
 	fi
 else
+	echo ""
 	#docker run -d --network $CONTAINER_NETWORK -p "$REDIS_PORT:$REDIS_PORT" --name "$CONTAINER_REDIS" redis redis-server --save 60 1 --loglevel warning
 fi
 
