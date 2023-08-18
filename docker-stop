@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 
 # Define the container names
-CONTAINER_REDIS=stone_customer_redis
+CONTAINER_REDIS=redis
 CONTAINER_API=stone_customer_api
 
-# Run redis and customer-api containers
+# Stop redis container
 if docker ps -a --format '{{.Names}}' | grep $CONTAINER_REDIS; then 
 	if docker ps -a --format '{{.Status}}' | grep "Up"; then 
 		docker stop $CONTAINER_REDIS
 	fi
 fi
 
+# Stop customer-api container
 if docker ps -a --format '{{.Names}}' | grep $CONTAINER_API; then 
 	if docker ps -a --format '{{.Status}}' | grep "Up"; then 
 		docker stop $CONTAINER_API
