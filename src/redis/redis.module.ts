@@ -2,10 +2,6 @@ import { Global, Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import Redis from 'ioredis';
 
-const configService = new ConfigService();
-console.log('REDIS_HOST', configService.get<string>('REDIS_HOST'));
-console.log('REDIS_PORT', configService.get<number>('REDIS_PORT'));
-
 @Global()
 @Module({
 	providers: [
