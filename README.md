@@ -6,7 +6,7 @@ Esta API REST tem como objetivo fornecer um serviço de cadastro de clientes, as
 ## Documentação
 A documentação da API está disponível em:
 
-[http://orionsoft.site/api/v1/reference](http://orionsoft.site/api/v1/reference)
+[http://customerapi.orionsoft.site/reference](http://customerapi.orionsoft.site/reference)
 
 ## Implementação
 A API foi implementada utilizando a seguinte Stack de tecnologias:

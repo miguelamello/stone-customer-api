@@ -29,7 +29,7 @@ Esta API REST tem como objetivo fornecer um serviço de cadastro de clientes, as
 A URL base para acesso a API é: 
 
 ```
-http://orionsoft.site/stone-customer-api/api/v1
+http://customerapi.orionsoft.site/
 ```
 
 
