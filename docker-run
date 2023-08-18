@@ -25,7 +25,8 @@ else
 	echo "HOST localhost" >> "$REDIS_FILE"
 	echo "PORT $REDIS_PORT" >> "$REDIS_FILE"
 	PWD=$(pwd)
-	docker run -d -v "$PWD/$REDIS_FILE:/usr/local/etc/redis" -p "$REDIS_PORT:$REDIS_PORT" --network $CONTAINER_NETWORK --name $CONTAINER_REDIS redis redis-server /usr/local/etc/redis/redis.conf
+	echo "CONFIGFILE $PWD/$REDIS_FILE"
+	docker run -d -v "$PWD/$REDIS_FILE:/etc/redis.conf" -p "$REDIS_PORT:$REDIS_PORT" --network $CONTAINER_NETWORK --name $CONTAINER_REDIS redis redis-server /usr/local/etc/redis/redis.conf
 fi
 
 if docker ps -a --format '{{.Names}}' | grep $CONTAINER_API; then 
