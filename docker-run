@@ -9,7 +9,7 @@ CONTAINER_API=stone_customer_api
 CONTAINER_NETWORK=stone_customer_api_network
 
 if ! docker network ls | grep $CONTAINER_NETWORK; then
-	docker network create $CONTAINER_NETWORK
+	docker network create --subnet=172.22.0.0/16 $CONTAINER_NETWORK
 fi
 
 # Run Redis and customer-api containers
@@ -18,7 +18,7 @@ if docker ps -a --format '{{.Names}}' | grep $CONTAINER_REDIS; then
 		docker start $CONTAINER_REDIS
 	fi
 else
-	docker run -d --network $CONTAINER_NETWORK -p "$REDIS_PORT:6379" --name $CONTAINER_REDIS redis redis-server --save 60 1 --loglevel warning
+	docker run -d --network $CONTAINER_NETWORK --ip=172.22.0.3 -p "$REDIS_PORT:6379" --name $CONTAINER_REDIS redis redis-server --save 60 1 --loglevel warning
 fi
 
 if docker ps -a --format '{{.Names}}' | grep $CONTAINER_API; then 
@@ -26,5 +26,5 @@ if docker ps -a --format '{{.Names}}' | grep $CONTAINER_API; then
 		docker start $CONTAINER_API
 	fi
 else
-	docker run -e "API_PORT=$API_PORT" -e "REDIS_HOST=$REDIS_HOST" -e "REDIS_PORT=$REDIS_PORT" -e "REDIS_TTL=$REDIS_TTL" -e "SECRET_KEY=$SECRET_KEY" -d  --network $CONTAINER_NETWORK -p "$API_PORT:$API_PORT" --name "$CONTAINER_API" "$CONTAINER_API"
+	docker run -e "API_PORT=$API_PORT" -e "REDIS_HOST=$REDIS_HOST" -e "REDIS_PORT=$REDIS_PORT" -e "REDIS_TTL=$REDIS_TTL" -e "SECRET_KEY=$SECRET_KEY" -d  --network $CONTAINER_NETWORK --ip=172.22.0.2 -p "$API_PORT:$API_PORT" --name "$CONTAINER_API" "$CONTAINER_API"
 fi
