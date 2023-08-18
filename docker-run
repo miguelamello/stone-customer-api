@@ -26,5 +26,5 @@ if docker ps -a --format '{{.Names}}' | grep $CONTAINER_API; then
 		docker start $CONTAINER_API
 	fi
 else
-	docker run -e "API_PORT=$API_PORT" -e "REDIS_HOST=$CONTAINER_REDIS" -e "REDIS_PORT=$REDIS_PORT" -e "REDIS_TTL=$REDIS_TTL" -e "SECRET_KEY=$SECRET_KEY" -d -p "127.0.0.1:$API_PORT:$API_PORT" --network "$CONTAINER_NETWORK" --name "$CONTAINER_API" "localhost/$CONTAINER_API:latest"
+	docker run -e "API_PORT=$API_PORT" -e "REDIS_HOST=$CONTAINER_REDIS" -e "REDIS_PORT=$REDIS_PORT" -e "REDIS_TTL=$REDIS_TTL" -e "SECRET_KEY=$SECRET_KEY" -d -p "127.0.0.1:$API_PORT:$API_PORT" --network "$CONTAINER_NETWORK" --name "$CONTAINER_API" "$CONTAINER_API:latest"
 fi
