@@ -4,7 +4,7 @@
 source .env
 
 # Define the container names
-CONTAINER_REDIS=$REDIS_HOST
+CONTAINER_REDIS=stone_customer_redis
 CONTAINER_API=stone_customer_api
 CONTAINER_NETWORK=stone_customer_api_network
 
@@ -18,7 +18,7 @@ if docker ps -a --format '{{.Names}}' | grep $CONTAINER_REDIS; then
 		docker start $CONTAINER_REDIS
 	fi
 else
-	docker run -d --network $CONTAINER_NETWORK --ip=172.22.0.3 -p "$REDIS_PORT:6379" --name $CONTAINER_REDIS redis redis-server --save 60 1 --loglevel warning
+	docker run -d --network $CONTAINER_NETWORK --ip=172.22.0.3 -p "$REDIS_PORT:6379" --name "$CONTAINER_REDIS" redis redis-server --save 60 1 --loglevel warning
 fi
 
 if docker ps -a --format '{{.Names}}' | grep $CONTAINER_API; then 
