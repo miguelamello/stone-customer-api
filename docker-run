@@ -18,7 +18,7 @@ if docker ps -a --format '{{.Names}}' | grep $CONTAINER_REDIS; then
 		docker start $CONTAINER_REDIS
 	fi
 else
-	docker run -d -p "127.0.0.1:$REDIS_PORT:6379" --network $CONTAINER_NETWORK --name $CONTAINER_REDIS redis redis-server --save 60 1 --loglevel warning
+	docker run -d -p "127.0.0.1:$REDIS_PORT:6379" --network $CONTAINER_NETWORK --name $CONTAINER_REDIS redis redis-server --bind redis --port 6379 --save 60 1 --loglevel warning
 fi
 
 if docker ps -a --format '{{.Names}}' | grep $CONTAINER_API; then 
