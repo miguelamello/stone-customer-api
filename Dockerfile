@@ -19,7 +19,7 @@ COPY --chown=node:node package*.json ./
 
 # Install app dependencies
 RUN npm install
-RUN npm prune --production
+RUN npm prune --omit=dev
 
 # Copy the rest of the application code
 COPY --chown=node:node . . 

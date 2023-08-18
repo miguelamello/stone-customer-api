@@ -43,8 +43,8 @@ A aplicação precisa de algumas poucas variáveis de ambiente para funcionar co
 A tarefa dele é simples, apenas criar um arquivo `.env` na raiz do projeto, e preencher as variáveis de ambiente com valores padrão:
 
 	API_PORT=3030
-	REDIS_HOST=localhost
-	REDIS_PORT=6380
+	REDIS_HOST=redis
+	REDIS_PORT=6379
 	REDIS_TTL=300
 	SECRET_KEY='3596bece-3609-4292-9ed8-b2881fae4cda'	
 
@@ -56,13 +56,13 @@ A tarefa dele é simples, apenas criar um arquivo `.env` na raiz do projeto, e p
 O propósito das variáveis já é bem auto-explicativo, mas segue uma breve descrição de cada uma:
 
 - `API_PORT`: Porta em que a API vai ser executada. O valor padrão é 3030.
-- `REDIS_HOST`: Endereço do servidor Redis. O valor padrão é `localhost` para execução local.
-- `REDIS_PORT`: Porta do servidor Redis. O valor padrão é 6380.
+- `REDIS_HOST`: Endereço do servidor Redis. O valor padrão é `redis` para execução sob o `Docker`.
+- `REDIS_PORT`: Porta do servidor Redis. O valor padrão é 6379.
 - `REDIS_TTL`: Tempo de vida dos dados temporários em cache no Redis, em segundos. O valor padrão é 300 segundos (5 minutos).
 - `SECRET_KEY`: Chave de segurança utilizada para criar um `hash` do Bearer Token. Você pode usar uma string de qualquer tamanho que desejar. 
 
 Observações: 
-1) Para evitar conflitos de porta com alguma instalação de `Redis` rodando no ambiente de teste, a porta padrão do `Redis` foi alterada para 6380.
+1) Para evitar conflitos de porta com alguma instalação de `Redis` rodando no ambiente de teste, torna-se necessário, enquanto realizando os testes no localhost, parar a execução da instância `Redis`, mais somente se ela estiver "escutando" na porta padrão `6379`. Caso a instância esteja executando como um container `Docker`, você deverá remover esse container, visto que a aplicação precisa acessar uma instância `Redis` que esteja no mesmo network do Docker.
 
 2) Pode ocorrer também de você ter alguma outra aplicação executando na porta padrão 3030. Nesse caso, você pode alterar a porta padrão da API para uma porta diferente, e alterar a variável `API_PORT` de acordo.
 
@@ -83,7 +83,7 @@ Se quiser iniciar novamente a aplicação, execute o comando `docker-run`.
 Se quiser ver os logs da aplicação novamente, execute o comando `docker-logs`.
 
 ## Uso
-Com a aplicação rodando no `Docker`, você pode começar a testar a API. Um primeiro passo é verificar se a aplicação está funcionando corretamente. Para isso, abra um navegador e acesse a documentação:
+Com a aplicação rodando no `Docker`, você pode começar a testar a API. Um primeiro passo é verificar se a aplicação está funcionando corretamente. Para isso, abra o navegador e acesse a documentação:
 
 `http://localhost:3030/reference`
 
@@ -91,7 +91,7 @@ Utilize a documentação para testar os endpoints da API. Você encontrará exem
 
 ## Testes
 
-Para executar os testes dos endpoints, execute o comando abaixo:
+Para executar os testes dos endpoints, execute o comando abaixo, na raiz do projeto:
 
 	npm test
 
