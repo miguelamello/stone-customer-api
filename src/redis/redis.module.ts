@@ -9,6 +9,8 @@ import Redis from 'ioredis';
 			provide: 'REDIS_CLIENT',
 			inject: [ConfigService],
 			useFactory: (configService: ConfigService) => {
+				console.log('REDIS_HOST', configService.get<string>('REDIS_HOST'));
+				console.log('REDIS_PORT', configService.get<number>('REDIS_PORT'));
 				return new Redis({
 					host: configService.get<string>('REDIS_HOST'), // Set in process.env.REDIS_HOST
 					port: configService.get<number>('REDIS_PORT'), // Set in process.env.REDIS_PORT

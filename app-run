@@ -10,7 +10,6 @@ echo "REDIS_PORT=6380" >> "$ENV_FILE"
 echo "REDIS_TTL=300" >> "$ENV_FILE"
 echo "SECRET_KEY='3596bece-3609-4292-9ed8-b2881fae4cda'" >> "$ENV_FILE"
 source "$ENV_FILE"
-
 npm run build
 npm run static
 npm run start:prod
